@@ -30,22 +30,11 @@ footer {
     padding: 10px 0;
 }
 
-/* footer {
-    position: absolute;
-    bottom: 0;
-    height: 24px;
-    width: 100%;
-    bottom: 0;
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-} */
-
 #best-score {
-    position: absolute;
+    position: relative;
     right: 10px;
     top: 10px;
+    text-align: right;
     color: #333;
 }
 
