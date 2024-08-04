@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="content">
+            <h1>{{topic_name}} Quiz</h1>
+            <div id="best-score">
+                <p><b>Best Score: {{ best_score }}</b> </p>
+            </div>
+            <form action="{{ url_for('routes.result', topic_id=topic_id) }}" method="POST">
+                <div class="question">
+                    <h3>This section contains test questions.</h3>
+                    {% for question in test_questions %}
+                    <div>
+                        <h4>Test Question {{ loop.index }}: {{ question.question }}</h4>
+                        <input type="radio" name="question_{{ question.id }}" value="{{ question.option1 }}"> {{
+                        question.option1 }}<br>
+                        <input type="radio" name="question_{{ question.id }}" value="{{ question.option2 }}"> {{
+                        question.option2 }}<br>
+                        <input type="radio" name="question_{{ question.id }}" value="{{ question.option3 }}"> {{
+                        question.option3 }}<br>
+                        <input type="radio" name="question_{{ question.id }}" value="{{ question.option4 }}"> {{
+                        question.option4 }}<br>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="question">
+                    <h3>This section contains open-ended questions.</h3>
+                    {% for question in open_ended_questions %}
+                    <div>
+                        <h4>Open-Ended Question {{ loop.index }}: {{ question.question }}</h4>
+                        <textarea name="question_{{ question.id }}" rows="4" cols="50"></textarea>
+                    </div>
+                    {% endfor %}
+
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    <footer>Developed by Derda Karaaslan</footer>
+</body>
+
+</html>
